@@ -15,9 +15,10 @@ export default function Create() {
   async function handleCreate(e) {
     e.preventDefault();
 
-    const res = await fetch("/api/posts", {
+    const res = await fetch(`${import.meta.env.VITE_API_URL}/posts`, {
       method: "post",
       headers: {
+        "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify(formData),

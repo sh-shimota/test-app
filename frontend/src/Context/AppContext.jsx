@@ -7,7 +7,7 @@ export default function AppProvider({ children }) {
   const [user, setUser] = useState(null);
 
   async function getUser() {
-    const res = await fetch("/api/user", {
+    const res = await fetch(`${import.meta.env.VITE_API_URL}/user`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },

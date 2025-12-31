@@ -9,7 +9,7 @@ export default function Layout() {
   async function handleLogout(e) {
     e.preventDefault();
 
-    const res = await fetch("/api/logout", {
+    const res = await fetch(`${import.meta.env.VITE_API_URL}/logout`, {
       method: "post",
       headers: {
         Authorization: `Bearer ${token}`,

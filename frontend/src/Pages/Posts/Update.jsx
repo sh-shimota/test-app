@@ -14,7 +14,7 @@ export default function Update() {
   const [errors, setErrors] = useState({});
 
   async function getPost() {
-    const res = await fetch(`/api/posts/${id}`);
+    const res = await fetch(`${import.meta.env.VITE_API_URL}/posts/${id}`);
     const data = await res.json();
 
     if (res.ok) {
@@ -32,10 +32,12 @@ export default function Update() {
   async function handleUpdate(e) {
     e.preventDefault();
 
-    const res = await fetch(`/api/posts/${id}`, {
+    const res = await fetch(`${import.meta.env.VITE_API_URL}/posts/${id}`, {
       method: "put",
       headers: {
         Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+        Accept: "application/json",
       },
       body: JSON.stringify(formData),
     });

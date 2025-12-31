@@ -10,7 +10,7 @@ export default function Show() {
   const [post, setPost] = useState(null);
 
   async function getPost() {
-    const res = await fetch(`/api/posts/${id}`);
+    const res = await fetch(`${import.meta.env.VITE_API_URL}/posts/${id}`);
     const data = await res.json();
 
     if (res.ok) {
@@ -22,7 +22,7 @@ export default function Show() {
     e.preventDefault();
 
     if (user && user.id === post.user_id) {
-      const res = await fetch(`/api/posts/${id}`, {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/posts/${id}`, {
         method: "delete",
         headers: {
           Authorization: `Bearer ${token}`,
